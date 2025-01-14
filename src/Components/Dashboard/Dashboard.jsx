@@ -44,9 +44,10 @@ const Dashboard = () => {
                 setFirstDate(sortedProducts[0].date)
                 setLastDate(sortedProducts[sortedProducts.length - 1].date)
             }
+            setLoader(false)
         }
         fetchProduct()
-        setLoader(false)
+        
     },[]) 
     const handleProductType=(type)=>{
         setProductType(type)
@@ -214,11 +215,14 @@ const Dashboard = () => {
         calculateMonthlyStats();
     
     },[firstDate,lastDate,filterProduct,productType,saleCountry])
-    if(loader){
-        return <div className='h-screen w-full'><div className='animate-pulse'>Loader....</div></div>
-    }else{
+
         return <>
-    <div className="grid grid-cols-4 gap-4">
+        {
+            loader ?
+            <div className='h-full flex justify-center items-center'><div className='animate-pulse text-[25px] text-green-800'>Loader....</div></div>:
+        <>
+        <div className='py-5 text-[30px] text-center bg-slate-600 text-orange-300'>Product Sales Admin Dashboard</div>
+    <div className="grid grid-cols-4 gap-4 py-3">
         
         <DashBoardCard cardName={"Sales"}  cardAmount={productA?.sale}/>
         <DashBoardCard cardName={"Boxes"} cardAmount={productA?.box}/>
@@ -226,7 +230,6 @@ const Dashboard = () => {
         <DashBoardCard cardName={"Profits"} cardAmount={productA?.profit}/>
     </div>
 
-    {/* Analytics Chart Placeholder */}
     <div className='grid grid-cols-12'>
         <div className="bg-white p-4 shadow rounded mt-4 col-span-2 flex flex-row gap-x-3">
            <div className='grid grid-cols-1 gap-y-2'>
@@ -255,10 +258,11 @@ const Dashboard = () => {
             <DoughnutChart productA={productA}/>
         </div>
     </div>
-
+    </>
     
-  </>
+  
     }
+    </>
   
 };
 
