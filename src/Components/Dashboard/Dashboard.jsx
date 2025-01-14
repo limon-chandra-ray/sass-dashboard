@@ -5,6 +5,8 @@ import axios from 'axios';
 import { ConstData } from './Data';
 import DoughnutChart from './DoughnutChart';
 import { BaseUrl } from '../../Constant/ApiDomain';
+
+
 const Dashboard = () => {
     const [products,setProduct] = useState([])
     const [loader,setLoader] = useState(true)
@@ -218,45 +220,47 @@ const Dashboard = () => {
         return <>
         {
             loader ?
-            <div className='h-full flex justify-center items-center'><div className='animate-pulse text-[25px] text-green-800'>Loader....</div></div>:
-        <>
+            <div className='h-full w-full flex justify-center items-center'><div className='animate-pulse text-[25px] text-green-800'>Loader....</div></div>:
+        <> 
         <div className='py-5 text-[30px] text-center bg-slate-600 text-orange-300'>Product Sales Admin Dashboard</div>
-    <div className="grid grid-cols-4 gap-4 py-3">
-        
-        <DashBoardCard cardName={"Sales"}  cardAmount={productA?.sale}/>
-        <DashBoardCard cardName={"Boxes"} cardAmount={productA?.box}/>
-        <DashBoardCard cardName={"Costs"} cardAmount={productA?.cost}/>
-        <DashBoardCard cardName={"Profits"} cardAmount={productA?.profit}/>
-    </div>
+        <div className="grid grid-cols-4 gap-4 py-3">
+            
+            <DashBoardCard cardName={"Sales"}  cardAmount={productA?.sale}/>
+            <DashBoardCard cardName={"Boxes"} cardAmount={productA?.box}/>
+            <DashBoardCard cardName={"Costs"} cardAmount={productA?.cost}/>
+            <DashBoardCard cardName={"Profits"} cardAmount={productA?.profit}/>
+        </div>
 
-    <div className='grid grid-cols-12'>
-        <div className="bg-white p-4 shadow rounded mt-4 col-span-2 flex flex-row gap-x-3">
-           <div className='grid grid-cols-1 gap-y-2'>
-                <div>Product Category : </div>
-                <button className={`${productType === "all"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`} onClick={()=>handleProductType("all")} >All</button>
-                <button className={`${productType === "Bars"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`}  
-                onClick={()=>handleProductType("Bars")}>Bars</button>
-                <button className={`${productType === "Bites"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`}  
-                onClick={()=>handleProductType("Bites")}>Bites</button>
-                <button className={`${productType === "Other"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`} 
-                 onClick={()=>handleProductType("Other")}>Other</button>
-           </div>
-           <div className='grid grid-cols-1 gap-y-2'>
-                <div>Salse Country: </div>
-                {
-                    country?.map((des,index)=><button key={index} className={`${saleCountry === `${des}` ?"bg-green-400":"bg-slate-100"} py-2 px-2 rounded-md`} 
-                    onClick={()=>handleGeography(`${des}`)} >{des}</button>)
-                }
+        <div className='grid grid-cols-12'>
+            <div className="bg-white p-4 shadow rounded mt-4 col-span-2 flex flex-row gap-x-3">
+            <div className='grid grid-cols-1 gap-y-2'>
+                    <div>Product Category : </div>
+                    <button className={`${productType === "all"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`} onClick={()=>handleProductType("all")} >All</button>
+                    <button className={`${productType === "Bars"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`}  
+                    onClick={()=>handleProductType("Bars")}>Bars</button>
+                    <button className={`${productType === "Bites"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`}  
+                    onClick={()=>handleProductType("Bites")}>Bites</button>
+                    <button className={`${productType === "Other"?"bg-green-400":"bg-slate-100"} py-2 px-5 rounded-md`} 
+                    onClick={()=>handleProductType("Other")}>Other</button>
+            </div>
+            <div className='grid grid-cols-1 gap-y-2'>
+                    <div>Salse Country: </div>
+                    {
+                        country?.map((des,index)=><button key={index} className={`${saleCountry === `${des}` ?"bg-green-400":"bg-slate-100"} py-2 px-2 rounded-md`} 
+                        onClick={()=>handleGeography(`${des}`)} >{des}</button>)
+                    }
+                    
+            </div>
+            </div>
+            <div className="bg-white p-4 shadow rounded mt-4 col-span-6">
+                <LineChart monthlyData={monthlyData} months_list={dmonths}/>
+            </div>
+            <div className='col-span-4 flex justify-center items-center'>
+                <DoughnutChart productA={productA}/>
+            </div>
+        </div>
                 
-           </div>
-        </div>
-        <div className="bg-white p-4 shadow rounded mt-4 col-span-6">
-            <LineChart monthlyData={monthlyData} months_list={dmonths}/>
-        </div>
-        <div className='col-span-4 flex justify-center items-center'>
-            <DoughnutChart productA={productA}/>
-        </div>
-    </div>
+        
     </>
     
   
