@@ -8,7 +8,23 @@ const DashBoardCard=({cardName,cardAmount,cardLogo})=>{
                 <div className="text-[25px] font-bold">${cardAmount}</div>
             </div>
             <div>
-                <ShoppingCartIcon className="size-5"/>
+                {
+                    cardName === "Sales"?
+                    <ShoppingCartIcon  className="size-5"/>:null
+                }
+                {
+                    cardName === "Boxes"?
+                    <ShoppingCartIcon className="size-5" />:null
+                }
+                {
+                    cardName === "Costs"?
+                    <ShoppingCartIcon className="size-5"/>:null
+                }
+                {
+                    cardName === "Profits"?
+                    <ShoppingCartIcon className="size-5" />:null
+                }
+                
             </div>
         </div>
         <div className="grid grid-cols-1 px-3 py-1 h-[60px]">

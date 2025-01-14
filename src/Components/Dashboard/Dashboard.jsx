@@ -5,7 +5,6 @@ import axios from 'axios';
 import { ConstData } from './Data';
 import DoughnutChart from './DoughnutChart';
 import { BaseUrl } from '../../Constant/ApiDomain';
-
 const Dashboard = () => {
     const [products,setProduct] = useState([])
     const [loader,setLoader] = useState(true)
