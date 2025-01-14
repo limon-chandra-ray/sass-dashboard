@@ -11,8 +11,8 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <div className="text-center">
-            <ArrowPathIcon className='size-5'/>
+        return <div className="w-full flex justify-center items-center text-center h-full">
+            <ArrowPathIcon className='size-5 animate-spin'/>
         </div>
     }
 

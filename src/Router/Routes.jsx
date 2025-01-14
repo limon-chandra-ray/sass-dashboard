@@ -5,6 +5,7 @@ import Analytics from "../Components/Analytics/Analytics";
 import Login from "../Components/auth/Login";
 import Signup from "../Components/auth/Signup";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SalesMan from "../Components/SalesMan/Sales";
 
 
 const router = createBrowserRouter(
@@ -20,6 +21,10 @@ const router = createBrowserRouter(
                 {
                     path:"/analytics",
                     element:<PrivateRoute><Analytics/></PrivateRoute>
+                },
+                {
+                    path:"/sales-man",
+                    element:<PrivateRoute><SalesMan/></PrivateRoute>
                 }
             ]
         },

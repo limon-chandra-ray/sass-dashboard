@@ -19,7 +19,7 @@ function App() {
           <Header/>
 
         {/* Content Area */}
-        <main className="p-4 flex-grow">
+        <main className="p-4 flex-grow h-[64%]">
           {<Outlet/>}
         </main>
 

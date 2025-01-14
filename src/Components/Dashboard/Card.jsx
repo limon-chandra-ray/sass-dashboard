@@ -1,7 +1,7 @@
 import { ShoppingCartIcon } from "@heroicons/react/20/solid";
 
 const DashBoardCard=({cardName,cardAmount,cardLogo})=>{
-    return <div className="bg-slate-400 rounded-md">
+    return <div className="bg-slate-400 rounded-md shadow-xl">
         <div className="flex justify-between items-center bg-slate-100 px-3 py-1 border-t-4 border-red-400">
             <div>
                 <div>{cardName}</div>
