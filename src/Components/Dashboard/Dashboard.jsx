@@ -4,6 +4,7 @@ import LineChart from './LineChart';
 import axios from 'axios';
 import { ConstData } from './Data';
 import DoughnutChart from './DoughnutChart';
+import { BaseUrl } from '../../Constant/ApiDomain';
 
 const Dashboard = () => {
     const [products,setProduct] = useState([])
@@ -27,7 +28,7 @@ const Dashboard = () => {
     )
     useEffect(()=>{
         const fetchProduct=async()=>{
-            const get_products = await axios.get('http://localhost:5000/api/products')
+            const get_products = await axios.get(`${BaseUrl}api/products`)
             const products = get_products.data
             // Sort products by date in ascending order
             const sortedProducts = products.sort((a, b) => {

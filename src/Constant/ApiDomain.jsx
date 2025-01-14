@@ -1,0 +1,1 @@
+export const BaseUrl = "https://prdouct-sales-admin.onrender.com/"
