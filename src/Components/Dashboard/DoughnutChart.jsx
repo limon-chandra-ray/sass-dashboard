@@ -6,6 +6,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DoughnutChart = ({productA}) => {
     const data = {
+        labels:["Sale","Cost","Profit"],
         datasets: [
             {
                 label: 'My First Dataset',
@@ -23,6 +24,21 @@ const DoughnutChart = ({productA}) => {
     const options = {
         responsive: true,
         plugins: {
+            legend:{
+                display:false
+            },
+            title: {
+                display: true, // Enable the title
+                text: 'Total Sale Cost Profit', // Your chart title
+                font: {
+                    size: 16, // Adjust font size
+                    weight: 'bold', // Adjust font weight
+                },
+                padding: {
+                    top: 10,
+                    bottom: 10,
+                },
+            },
             tooltip: {
                 callbacks: {
                     label: (context) => {
@@ -34,7 +50,7 @@ const DoughnutChart = ({productA}) => {
     };
 
     return (
-        <div className='w-[350px] h-[350px]'>
+        <div className='w-[200px] h-[200px]'>
             <Doughnut data={data} options={options} className='w-[250px] h-[250px]'  />
         </div>
     );

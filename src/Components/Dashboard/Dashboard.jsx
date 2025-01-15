@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ConstData } from './Data';
 import DoughnutChart from './DoughnutChart';
 import { BaseUrl } from '../../Constant/ApiDomain';
+import DoughnutChart2 from './DoughuntChart2';
 
 
 const Dashboard = () => {
@@ -18,6 +19,7 @@ const Dashboard = () => {
     const [lastDate,setLastDate] = useState(null)
     const [monthlyData,setMonthlyData]= useState([])
     const [dmonths,setDMonth] = useState([])
+    const [countrySale,setCountrySale] = useState([])
     const country = ["All","India","USA","UK","Canada","New Zealand","Australia"]
     const [productA,setProductA] = useState(
         {
@@ -205,18 +207,30 @@ const Dashboard = () => {
                     return { monthKey, sales: monthStats.sales,box:monthStats.box, cost: monthStats.cost, profit: monthStats.profit };
                 });
                 setMonthlyData(monthlyData)
-                // Store or log the calculated monthly sales data
-                console.log(monthlyData);
-    
-                // Optionally, you can set this data into your state if needed
-                // setMonthlyStats(monthlyData);
+                
             }
         };
     
         calculateMonthlyStats();
-    
+        const perCountryProductSale=()=>{
+            const productCount = filterProduct.reduce((acc, sale) => {
+                if(sale.geography){
+                    acc[sale.geography] = (acc[sale.geography] || 0) + parseInt(sale.boxes);
+                }
+                
+                return acc;
+              }, {});
+            // Transform the productCount object into a list of objects
+            const productCountList = Object.entries(productCount).map(([geography, totalBoxes]) => ({
+                geography,
+                totalBoxes,
+            }));
+            
+            setCountrySale(productCountList);
+        }
+        perCountryProductSale()
     },[firstDate,lastDate,filterProduct,productType,saleCountry])
-
+        console.log(countrySale)
         return <>
         {
             loader ?
@@ -255,8 +269,12 @@ const Dashboard = () => {
             <div className="bg-white p-4 shadow rounded mt-4 col-span-6">
                 <LineChart monthlyDataList={monthlyData} months_list={dmonths}/>
             </div>
-            <div className='col-span-4 flex justify-center items-center'>
+            <div className='col-span-4 flex flex-col justify-center items-center gap-y-3'>
                 <DoughnutChart productA={productA}/>
+                <div className=''>
+                    <DoughnutChart2 countrySale={countrySale}/>
+                </div>
+                
             </div>
         </div>
                 
