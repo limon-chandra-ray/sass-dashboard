@@ -253,7 +253,7 @@ const Dashboard = () => {
             </div>
             </div>
             <div className="bg-white p-4 shadow rounded mt-4 col-span-6">
-                <LineChart monthlyData={monthlyData} months_list={dmonths}/>
+                <LineChart monthlyDataList={monthlyData} months_list={dmonths}/>
             </div>
             <div className='col-span-4 flex justify-center items-center'>
                 <DoughnutChart productA={productA}/>

@@ -55,55 +55,28 @@ const SalesMan=()=>{
     }
     return <>
     <div className="w-full h-full overflow-y-auto relative">
-  <table className="table-fixed w-full border-collapse">
-    <thead className="sticky top-0 bg-slate-500 text-white z-10">
-      <tr className="text-left">
-        <th className="px-3 py-4">Sales Person</th>
-        <th className="px-3 py-4">Sales</th>
-        <th className="px-3 py-4">Total Boxes</th>
-        <th className="px-3 py-4">Profit</th>
-      </tr>
-    </thead>
-    <tbody>
-      {salesMans?.map((person, index) => (
-        <tr key={index} className="hover:bg-slate-500 cursor-pointer">
-          <td className="py-2">{person?.sales_person}</td>
-          <td className="py-2">{person?.total_sales}</td>
-          <td className="py-2">{person?.total_box}</td>
-          <td className="py-2">{person?.total_profit}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-        {/* <div className="w-full">
-            <table class="table-fixed w-full">
-            <thead>
-                <tr className="text-left bg-slate-500 text-white">
-                    <th className="px-3 py-1">Sales Person</th>
-                    <th className="px-3 py-1">Sales</th>
-                    <th className="px-3 py-1">Total Boxes</th>
-                    <th className="px-3 py-1">Profit</th>
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    salesMans?.map((person,index)=>{
-                        return (
-                            <tr key={index} className="hover:bg-slate-500">
-                                <td className=" py-2">{person?.sales_person}</td>
-                                <td className=" py-2">{person?.total_sales}</td>
-                                <td className=" py-2">{person?.total_box}</td>
-                                <td className=" py-2">{person?.total_profit}</td>
-                            </tr>
-                        )
-                    })
-                }
-               
-                
-            </tbody>
-            </table>
-        </div> */}
+      <table className="table-fixed w-full border-collapse">
+        <thead className="sticky top-0 bg-slate-500 text-white z-10">
+          <tr className="text-left">
+            <th className="px-3 py-4">Sales Person</th>
+            <th className="px-3 py-4">Sales</th>
+            <th className="px-3 py-4">Total Boxes</th>
+            <th className="px-3 py-4">Profit</th>
+          </tr>
+        </thead>
+        <tbody>
+          {salesMans?.map((person, index) => (
+            <tr key={index} className="hover:bg-slate-500 cursor-pointer">
+              <td className="py-2">{person?.sales_person}</td>
+              <td className="py-2">{person?.total_sales}</td>
+              <td className="py-2">{person?.total_box}</td>
+              <td className="py-2">{person?.total_profit}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+        
     </>
 }
 export default SalesMan;
