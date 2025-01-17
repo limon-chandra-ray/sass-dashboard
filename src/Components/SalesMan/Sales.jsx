@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import { BaseUrl } from "../../Constant/ApiDomain";
 import axios from "axios";
 import { ConstData } from "../Dashboard/Data";
+import { useFetchProducts } from "../../hooks/usefetchProducts";
 
 const SalesMan=()=>{
     const [salesMans,setSalesMan]= useState()
     const [loader,setLoader] = useState(true)
+    const {products,dateRange,loading} = useFetchProducts(BaseUrl)
     useEffect(()=>{
         const fetchProduct=async()=>{
-            const get_products = await axios.get(`${BaseUrl}api/products`);
-            const products = get_products.data;
+            
 
 
             const productCostMap = ConstData.reduce((acc, product) => {
@@ -49,7 +50,7 @@ const SalesMan=()=>{
             setLoader(false)
         }
         fetchProduct()
-    },[])
+    },[products])
     const handleSort=()=>{
 
     }
